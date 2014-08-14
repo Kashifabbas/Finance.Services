@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinanceDBModelStoreContainer" CdmEntityContainer="FinanceDBEntities">
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="FinanceDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country_LeaseTime">
+      <EntityTypeMapping TypeName="FinanceDBModel.Country_LeaseTime">
+        <MappingFragment StoreEntitySet="Country_LeaseTime">
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="LeaseTimeID" ColumnName="LeaseTimeID" />
+          <ScalarProperty Name="CostOfFunds" ColumnName="CostOfFunds" />
+          <ScalarProperty Name="Margin" ColumnName="Margin" />
+          <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+          <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaseTimes">
+      <EntityTypeMapping TypeName="FinanceDBModel.LeaseTime">
+        <MappingFragment StoreEntitySet="LeaseTime">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Months" ColumnName="Months" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoredOffers">
+      <EntityTypeMapping TypeName="FinanceDBModel.StoredOffer">
+        <MappingFragment StoreEntitySet="StoredOffer">
+          <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+          <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+          <ScalarProperty Name="OfferValue" ColumnName="OfferValue" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="OrganizationNumber" ColumnName="OrganizationNumber" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+          <ScalarProperty Name="LeaseTimeMonth" ColumnName="LeaseTimeMonth" />
+          <ScalarProperty Name="CostOfFund" ColumnName="CostOfFund" />
+          <ScalarProperty Name="Margin" ColumnName="Margin" />
+          <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+          <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+          <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Country_GetAll" FunctionName="FinanceDBModel.Store.Country_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FinanceDBModel.Country_GetAll_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InterestRate_GetAll" FunctionName="FinanceDBModel.Store.InterestRate_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FinanceDBModel.InterestRate_GetAll_Result">
+          <ScalarProperty Name="CountyLeaseTimeID" ColumnName="CountyLeaseTimeID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="LeaseTime" ColumnName="LeaseTime" />
+          <ScalarProperty Name="LeaseTimeID" ColumnName="LeaseTimeID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Margin" ColumnName="Margin" />
+          <ScalarProperty Name="CostOfFunds" ColumnName="CostOfFunds" />
+          <ScalarProperty Name="IRR" ColumnName="IRR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CountryEmail" ColumnName="CountryEmail" />
+          <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+          <ScalarProperty Name="CountryCurrency" ColumnName="CountryCurrency" />
+          <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LeaseTime_GetAll" FunctionName="FinanceDBModel.Store.LeaseTime_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FinanceDBModel.LeaseTime_GetAll_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Months" ColumnName="Months" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="StoredOffer_GetAll" FunctionName="FinanceDBModel.Store.StoredOffer_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FinanceDBModel.StoredOffer_GetAll_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+          <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+          <ScalarProperty Name="OfferValue" ColumnName="OfferValue" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="OrganizationNumber" ColumnName="OrganizationNumber" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+          <ScalarProperty Name="LeaseTimeMonth" ColumnName="LeaseTimeMonth" />
+          <ScalarProperty Name="IRR" ColumnName="IRR" />
+          <ScalarProperty Name="CostOfFund" ColumnName="CostOfFund" />
+          <ScalarProperty Name="Margin" ColumnName="Margin" />
+          <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+          <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+          <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+          <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+          <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="StoredOffer_Add" FunctionName="FinanceDBModel.Store.StoredOffer_Add">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FinanceDBModel.StoredOffer_Add_Result">
+          <ScalarProperty Name="SubmitID" ColumnName="SubmitID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

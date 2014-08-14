@@ -1,0 +1,7 @@
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\bin\Debug\Ciklum.ATEA.Finance.Service.Utilities.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\bin\Debug\Ciklum.ATEA.Finance.Service.Utilities.pdb
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\bin\Debug\NLog.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\bin\Debug\NLog.xml
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\obj\Debug\Ciklum.ATEA.Finance.Service.Utilities.csprojResolveAssemblyReference.cache
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\obj\Debug\Ciklum.ATEA.Finance.Service.Utilities.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Utilities\obj\Debug\Ciklum.ATEA.Finance.Service.Utilities.pdb

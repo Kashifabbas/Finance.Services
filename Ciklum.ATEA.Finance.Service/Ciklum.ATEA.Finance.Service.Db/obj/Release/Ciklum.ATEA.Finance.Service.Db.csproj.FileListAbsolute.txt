@@ -1,0 +1,11 @@
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.ATEA.Finance.Service.Db.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.ATEA.Finance.Service.Db.pdb
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.Atea.Finance.Service.Domain.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.ATEA.Finance.Service.Utilities.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\NLog.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.Atea.Finance.Service.Domain.pdb
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\Ciklum.ATEA.Finance.Service.Utilities.pdb
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\bin\Release\NLog.xml
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\obj\Release\Ciklum.ATEA.Finance.Service.Db.csprojResolveAssemblyReference.cache
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\obj\Release\Ciklum.ATEA.Finance.Service.Db.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.ATEA.Finance.Service.Db\obj\Release\Ciklum.ATEA.Finance.Service.Db.pdb

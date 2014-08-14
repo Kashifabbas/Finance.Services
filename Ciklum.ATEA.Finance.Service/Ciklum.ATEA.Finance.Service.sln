@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciklum.ATEA.Finance.Service.Db", "Ciklum.ATEA.Finance.Service.Db\Ciklum.ATEA.Finance.Service.Db.csproj", "{6C544057-A157-4ED6-A125-2D92AD0D528E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciklum.Atea.Finance.Service.Domain", "Ciklum.Atea.Finance.Service.Domain\Ciklum.Atea.Finance.Service.Domain.csproj", "{3F2C6FD2-BF63-4061-8FDF-250F38710897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciklum.ATEA.Finance.Service.Utilities", "Ciklum.ATEA.Finance.Service.Utilities\Ciklum.ATEA.Finance.Service.Utilities.csproj", "{81E1691C-40A3-4917-8204-A584A4AA82AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciklum.ATEA.Finance.Service.WebApi", "Ciklum.ATEA.Finance.Service.WebApi\Ciklum.ATEA.Finance.Service.WebApi.csproj", "{F141587E-1A6B-4F40-9FBC-306A94703CA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{06928867-3BAD-4EC8-92CD-0BE8E582F3F4}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.isb.ciklum.net:8080/tfs/atea
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Ciklum.ATEA.Finance.Service.Db\\Ciklum.ATEA.Finance.Service.Db.csproj
+		SccProjectName1 = Ciklum.ATEA.Finance.Service.Db
+		SccLocalPath1 = Ciklum.ATEA.Finance.Service.Db
+		SccProjectUniqueName2 = Ciklum.Atea.Finance.Service.Domain\\Ciklum.Atea.Finance.Service.Domain.csproj
+		SccProjectName2 = Ciklum.Atea.Finance.Service.Domain
+		SccLocalPath2 = Ciklum.Atea.Finance.Service.Domain
+		SccProjectUniqueName3 = Ciklum.ATEA.Finance.Service.Utilities\\Ciklum.ATEA.Finance.Service.Utilities.csproj
+		SccProjectName3 = Ciklum.ATEA.Finance.Service.Utilities
+		SccLocalPath3 = Ciklum.ATEA.Finance.Service.Utilities
+		SccProjectUniqueName4 = Ciklum.ATEA.Finance.Service.WebApi\\Ciklum.ATEA.Finance.Service.WebApi.csproj
+		SccProjectName4 = Ciklum.ATEA.Finance.Service.WebApi
+		SccLocalPath4 = Ciklum.ATEA.Finance.Service.WebApi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C544057-A157-4ED6-A125-2D92AD0D528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C544057-A157-4ED6-A125-2D92AD0D528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C544057-A157-4ED6-A125-2D92AD0D528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C544057-A157-4ED6-A125-2D92AD0D528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2C6FD2-BF63-4061-8FDF-250F38710897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2C6FD2-BF63-4061-8FDF-250F38710897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2C6FD2-BF63-4061-8FDF-250F38710897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2C6FD2-BF63-4061-8FDF-250F38710897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E1691C-40A3-4917-8204-A584A4AA82AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E1691C-40A3-4917-8204-A584A4AA82AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E1691C-40A3-4917-8204-A584A4AA82AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E1691C-40A3-4917-8204-A584A4AA82AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F141587E-1A6B-4F40-9FBC-306A94703CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F141587E-1A6B-4F40-9FBC-306A94703CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F141587E-1A6B-4F40-9FBC-306A94703CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F141587E-1A6B-4F40-9FBC-306A94703CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinanceDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FinanceDBModelStoreContainer">
+          <EntitySet Name="Country" EntityType="FinanceDBModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country_LeaseTime" EntityType="FinanceDBModel.Store.Country_LeaseTime" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LeaseTime" EntityType="FinanceDBModel.Store.LeaseTime" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StoredOffer" EntityType="FinanceDBModel.Store.StoredOffer" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Country_LeaseTime_Country" Association="FinanceDBModel.Store.FK_Country_LeaseTime_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_LeaseTime_LeaseTime1" Association="FinanceDBModel.Store.FK_Country_LeaseTime_LeaseTime1">
+            <End Role="LeaseTime" EntitySet="LeaseTime" />
+            <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="EditNote" Type="nvarchar" />
+          <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="RoundCurrency" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country_LeaseTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="LeaseTimeID" Type="int" />
+          <Property Name="CostOfFunds" Type="varchar" MaxLength="10" />
+          <Property Name="Margin" Type="varchar" MaxLength="10" />
+          <Property Name="FunderMargin" Type="varchar" MaxLength="10" />
+          <Property Name="ApplicableStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ApplicableEndDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LeaseTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Months" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="StoredOffer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Submitter" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SubmitDate" Type="datetime" Nullable="false" />
+          <Property Name="OfferValue" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="OrganizationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="LeaseTimeMonth" Type="int" Nullable="false" />
+          <Property Name="CostOfFund" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Margin" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="FunderMargin" Type="varchar" MaxLength="10" />
+          <Property Name="ApplicableStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ApplicableEndDate" Type="datetime" />
+          <Property Name="EditNote" Type="nvarchar" Nullable="false" />
+          <Property Name="MonthlyPayment" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Country_LeaseTime_Country">
+          <End Role="Country" Type="FinanceDBModel.Store.Country" Multiplicity="0..1" />
+          <End Role="Country_LeaseTime" Type="FinanceDBModel.Store.Country_LeaseTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Country_LeaseTime">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_LeaseTime_LeaseTime1">
+          <End Role="LeaseTime" Type="FinanceDBModel.Store.LeaseTime" Multiplicity="0..1" />
+          <End Role="Country_LeaseTime" Type="FinanceDBModel.Store.Country_LeaseTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeaseTime">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Country_LeaseTime">
+              <PropertyRef Name="LeaseTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Country_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InterestRate_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="LeaseTime_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StoredOffer_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Submitter" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubmitDate" Type="datetime" Mode="In" />
+          <Parameter Name="OfferValue" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+          <Parameter Name="OrganizationNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="LeaseTimeMonth" Type="int" Mode="In" />
+          <Parameter Name="CostOfFund" Type="varchar" Mode="In" />
+          <Parameter Name="Margin" Type="varchar" Mode="In" />
+          <Parameter Name="FunderMargin" Type="varchar" Mode="In" />
+          <Parameter Name="ApplicableStartDate" Type="datetime" Mode="In" />
+          <Parameter Name="ApplicableEndDate" Type="datetime" Mode="In" />
+          <Parameter Name="EditNote" Type="nvarchar" Mode="In" />
+          <Parameter Name="MonthlyPayment" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="StoredOffer_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinanceDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FinanceDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Countries" EntityType="FinanceDBModel.Country" />
+          <EntitySet Name="Country_LeaseTime" EntityType="FinanceDBModel.Country_LeaseTime" />
+          <EntitySet Name="LeaseTimes" EntityType="FinanceDBModel.LeaseTime" />
+          <EntitySet Name="StoredOffers" EntityType="FinanceDBModel.StoredOffer" />
+          <AssociationSet Name="FK_Country_LeaseTime_Country" Association="FinanceDBModel.FK_Country_LeaseTime_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_LeaseTime_LeaseTime1" Association="FinanceDBModel.FK_Country_LeaseTime_LeaseTime1">
+            <End Role="LeaseTime" EntitySet="LeaseTimes" />
+            <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+          </AssociationSet>
+          <FunctionImport Name="Country_GetAll" ReturnType="Collection(FinanceDBModel.Country_GetAll_Result)" />
+          <FunctionImport Name="InterestRate_GetAll" ReturnType="Collection(FinanceDBModel.InterestRate_GetAll_Result)" />
+          <FunctionImport Name="LeaseTime_GetAll" ReturnType="Collection(FinanceDBModel.LeaseTime_GetAll_Result)" />
+          <FunctionImport Name="StoredOffer_GetAll" ReturnType="Collection(FinanceDBModel.StoredOffer_GetAll_Result)" />
+          <FunctionImport Name="StoredOffer_Add" ReturnType="Collection(FinanceDBModel.StoredOffer_Add_Result)">
+            <Parameter Name="Submitter" Mode="In" Type="String" />
+            <Parameter Name="SubmitDate" Mode="In" Type="DateTime" />
+            <Parameter Name="OfferValue" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="CustomerName" Mode="In" Type="String" />
+            <Parameter Name="OrganizationNumber" Mode="In" Type="String" />
+            <Parameter Name="CustomerEmail" Mode="In" Type="String" />
+            <Parameter Name="CustomerPhone" Mode="In" Type="String" />
+            <Parameter Name="LeaseTimeMonth" Mode="In" Type="Int32" />
+            <Parameter Name="CostOfFund" Mode="In" Type="String" />
+            <Parameter Name="Margin" Mode="In" Type="String" />
+            <Parameter Name="FunderMargin" Mode="In" Type="String" />
+            <Parameter Name="ApplicableStartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ApplicableEndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EditNote" Mode="In" Type="String" />
+            <Parameter Name="MonthlyPayment" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EditNote" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Country_LeaseTime" Relationship="FinanceDBModel.FK_Country_LeaseTime_Country" FromRole="Country" ToRole="Country_LeaseTime" />
+          <Property Type="Boolean" Name="RoundCurrency" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country_LeaseTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="LeaseTimeID" Type="Int32" />
+          <Property Name="CostOfFunds" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Margin" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ApplicableStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicableEndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Country" Relationship="FinanceDBModel.FK_Country_LeaseTime_Country" FromRole="Country_LeaseTime" ToRole="Country" />
+          <NavigationProperty Name="LeaseTime" Relationship="FinanceDBModel.FK_Country_LeaseTime_LeaseTime1" FromRole="Country_LeaseTime" ToRole="LeaseTime" />
+          <Property Type="String" Name="FunderMargin" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="DeletedDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="LeaseTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Months" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Country_LeaseTime" Relationship="FinanceDBModel.FK_Country_LeaseTime_LeaseTime1" FromRole="LeaseTime" ToRole="Country_LeaseTime" />
+        </EntityType>
+        <EntityType Name="StoredOffer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Submitter" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SubmitDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OfferValue" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="OrganizationNumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LeaseTimeMonth" Type="Int32" Nullable="false" />
+          <Property Name="CostOfFund" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Margin" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ApplicableStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicableEndDate" Type="DateTime" Precision="3" />
+          <Property Name="EditNote" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="MonthlyPayment" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="DeletedDate" Precision="3" />
+          <Property Type="String" Name="FunderMargin" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Country_LeaseTime_Country">
+          <End Role="Country" Type="FinanceDBModel.Country" Multiplicity="0..1" />
+          <End Role="Country_LeaseTime" Type="FinanceDBModel.Country_LeaseTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Country_LeaseTime">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_LeaseTime_LeaseTime1">
+          <End Role="LeaseTime" Type="FinanceDBModel.LeaseTime" Multiplicity="0..1" />
+          <End Role="Country_LeaseTime" Type="FinanceDBModel.Country_LeaseTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeaseTime">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Country_LeaseTime">
+              <PropertyRef Name="LeaseTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Country_GetAll_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EditNote" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="Enable" Nullable="false" />
+          <Property Type="Boolean" Name="RoundCurrency" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="InterestRate_GetAll_Result">
+          <Property Type="Int32" Name="CountyLeaseTimeID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="78" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="Int32" Name="LeaseTime" Nullable="false" />
+          <Property Type="Int32" Name="LeaseTimeID" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Margin" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="CostOfFunds" Nullable="true" MaxLength="8000" />
+          <Property Type="Double" Name="IRR" Nullable="true" />
+          <Property Type="Int32" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="CountryEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FunderMargin" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="CountryCurrency" Nullable="false" MaxLength="25" />
+          <Property Type="Boolean" Name="RoundCurrency" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="LeaseTime_GetAll_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Months" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="StoredOffer_GetAll_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Submitter" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="SubmitDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="OfferValue" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="OrganizationNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustomerEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CustomerPhone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LeaseTimeMonth" Nullable="false" />
+          <Property Type="Double" Name="IRR" Nullable="true" />
+          <Property Type="String" Name="CostOfFund" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Margin" Nullable="true" MaxLength="8000" />
+          <Property Type="DateTime" Name="ApplicableStartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ApplicableEndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="EditNote" Nullable="false" MaxLength="4000" />
+          <Property Type="String" Name="FunderMargin" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="MonthlyPayment" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="StoredOffer_Add_Result">
+          <Property Type="Decimal" Name="SubmitID" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinanceDBModelStoreContainer" CdmEntityContainer="FinanceDBEntities">
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="FinanceDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country_LeaseTime">
+            <EntityTypeMapping TypeName="FinanceDBModel.Country_LeaseTime">
+              <MappingFragment StoreEntitySet="Country_LeaseTime">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="LeaseTimeID" ColumnName="LeaseTimeID" />
+                <ScalarProperty Name="CostOfFunds" ColumnName="CostOfFunds" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+                <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaseTimes">
+            <EntityTypeMapping TypeName="FinanceDBModel.LeaseTime">
+              <MappingFragment StoreEntitySet="LeaseTime">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoredOffers">
+            <EntityTypeMapping TypeName="FinanceDBModel.StoredOffer">
+              <MappingFragment StoreEntitySet="StoredOffer">
+                <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="OfferValue" ColumnName="OfferValue" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="OrganizationNumber" ColumnName="OrganizationNumber" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="LeaseTimeMonth" ColumnName="LeaseTimeMonth" />
+                <ScalarProperty Name="CostOfFund" ColumnName="CostOfFund" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+                <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+                <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Country_GetAll" FunctionName="FinanceDBModel.Store.Country_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FinanceDBModel.Country_GetAll_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InterestRate_GetAll" FunctionName="FinanceDBModel.Store.InterestRate_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FinanceDBModel.InterestRate_GetAll_Result">
+                <ScalarProperty Name="CountyLeaseTimeID" ColumnName="CountyLeaseTimeID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="LeaseTime" ColumnName="LeaseTime" />
+                <ScalarProperty Name="LeaseTimeID" ColumnName="LeaseTimeID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="CostOfFunds" ColumnName="CostOfFunds" />
+                <ScalarProperty Name="IRR" ColumnName="IRR" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CountryEmail" ColumnName="CountryEmail" />
+                <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+                <ScalarProperty Name="CountryCurrency" ColumnName="CountryCurrency" />
+                <ScalarProperty Name="RoundCurrency" ColumnName="RoundCurrency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LeaseTime_GetAll" FunctionName="FinanceDBModel.Store.LeaseTime_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FinanceDBModel.LeaseTime_GetAll_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StoredOffer_GetAll" FunctionName="FinanceDBModel.Store.StoredOffer_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FinanceDBModel.StoredOffer_GetAll_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="OfferValue" ColumnName="OfferValue" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="OrganizationNumber" ColumnName="OrganizationNumber" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="LeaseTimeMonth" ColumnName="LeaseTimeMonth" />
+                <ScalarProperty Name="IRR" ColumnName="IRR" />
+                <ScalarProperty Name="CostOfFund" ColumnName="CostOfFund" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="ApplicableStartDate" ColumnName="ApplicableStartDate" />
+                <ScalarProperty Name="ApplicableEndDate" ColumnName="ApplicableEndDate" />
+                <ScalarProperty Name="EditNote" ColumnName="EditNote" />
+                <ScalarProperty Name="FunderMargin" ColumnName="FunderMargin" />
+                <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StoredOffer_Add" FunctionName="FinanceDBModel.Store.StoredOffer_Add" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FinanceDBModel.StoredOffer_Add_Result">
+                <ScalarProperty Name="SubmitID" ColumnName="SubmitID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

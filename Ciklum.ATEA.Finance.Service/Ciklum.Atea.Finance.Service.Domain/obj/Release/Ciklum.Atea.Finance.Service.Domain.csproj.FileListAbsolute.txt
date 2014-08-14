@@ -1,0 +1,8 @@
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\bin\Release\Ciklum.Atea.Finance.Service.Domain.dll.config
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\bin\Release\Ciklum.Atea.Finance.Service.Domain.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\bin\Release\Ciklum.Atea.Finance.Service.Domain.pdb
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\bin\Release\EntityFramework.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\bin\Release\EntityFramework.xml
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\obj\Release\Ciklum.Atea.Finance.Service.Domain.csprojResolveAssemblyReference.cache
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\obj\Release\Ciklum.Atea.Finance.Service.Domain.dll
+C:\Users\kaab\Documents\Visual Studio 2012\Projects\Ciklum.ATEA.Finance.Service\Ciklum.Atea.Finance.Service.Domain\obj\Release\Ciklum.Atea.Finance.Service.Domain.pdb

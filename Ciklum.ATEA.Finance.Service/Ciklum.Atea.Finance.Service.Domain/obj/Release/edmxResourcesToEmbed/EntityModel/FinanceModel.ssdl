@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinanceDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FinanceDBModelStoreContainer">
+    <EntitySet Name="Country" EntityType="FinanceDBModel.Store.Country" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Country_LeaseTime" EntityType="FinanceDBModel.Store.Country_LeaseTime" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeaseTime" EntityType="FinanceDBModel.Store.LeaseTime" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StoredOffer" EntityType="FinanceDBModel.Store.StoredOffer" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Country_LeaseTime_Country" Association="FinanceDBModel.Store.FK_Country_LeaseTime_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Country_LeaseTime_LeaseTime1" Association="FinanceDBModel.Store.FK_Country_LeaseTime_LeaseTime1">
+      <End Role="LeaseTime" EntitySet="LeaseTime" />
+      <End Role="Country_LeaseTime" EntitySet="Country_LeaseTime" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="EditNote" Type="nvarchar" />
+    <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="RoundCurrency" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country_LeaseTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="LeaseTimeID" Type="int" />
+    <Property Name="CostOfFunds" Type="varchar" MaxLength="10" />
+    <Property Name="Margin" Type="varchar" MaxLength="10" />
+    <Property Name="FunderMargin" Type="varchar" MaxLength="10" />
+    <Property Name="ApplicableStartDate" Type="datetime" Nullable="false" />
+    <Property Name="ApplicableEndDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="isDeleted" Type="bit" Nullable="false" />
+    <Property Name="DeletedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LeaseTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Months" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="StoredOffer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Submitter" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SubmitDate" Type="datetime" Nullable="false" />
+    <Property Name="OfferValue" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="OrganizationNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="LeaseTimeMonth" Type="int" Nullable="false" />
+    <Property Name="CostOfFund" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Margin" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="FunderMargin" Type="varchar" MaxLength="10" />
+    <Property Name="ApplicableStartDate" Type="datetime" Nullable="false" />
+    <Property Name="ApplicableEndDate" Type="datetime" />
+    <Property Name="EditNote" Type="nvarchar" Nullable="false" />
+    <Property Name="MonthlyPayment" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="isDeleted" Type="bit" Nullable="false" />
+    <Property Name="DeletedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Country_LeaseTime_Country">
+    <End Role="Country" Type="FinanceDBModel.Store.Country" Multiplicity="0..1" />
+    <End Role="Country_LeaseTime" Type="FinanceDBModel.Store.Country_LeaseTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country_LeaseTime">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Country_LeaseTime_LeaseTime1">
+    <End Role="LeaseTime" Type="FinanceDBModel.Store.LeaseTime" Multiplicity="0..1" />
+    <End Role="Country_LeaseTime" Type="FinanceDBModel.Store.Country_LeaseTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeaseTime">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country_LeaseTime">
+        <PropertyRef Name="LeaseTimeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Country_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InterestRate_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="LeaseTime_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="StoredOffer_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Submitter" Type="nvarchar" Mode="In" />
+    <Parameter Name="SubmitDate" Type="datetime" Mode="In" />
+    <Parameter Name="OfferValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrganizationNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerPhone" Type="nvarchar" Mode="In" />
+    <Parameter Name="LeaseTimeMonth" Type="int" Mode="In" />
+    <Parameter Name="CostOfFund" Type="varchar" Mode="In" />
+    <Parameter Name="Margin" Type="varchar" Mode="In" />
+    <Parameter Name="FunderMargin" Type="varchar" Mode="In" />
+    <Parameter Name="ApplicableStartDate" Type="datetime" Mode="In" />
+    <Parameter Name="ApplicableEndDate" Type="datetime" Mode="In" />
+    <Parameter Name="EditNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="MonthlyPayment" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="StoredOffer_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>
